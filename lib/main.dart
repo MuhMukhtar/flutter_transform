@@ -31,7 +31,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  Offset _offset = Offset(0.4, 0.7);
+  Offset _offset = Offset.zero;
 
   void _incrementCounter() {
     setState(() {
@@ -44,10 +44,14 @@ class _MyHomePageState extends State<MyHomePage> {
     return Transform(  // Transform widget
       transform: Matrix4.identity()
         ..setEntry(3, 2, 0.001) // perspective
-        ..rotateX(_offset.dy)
-        ..rotateY(_offset.dx),
+        ..rotateX(0.01 * _offset.dy) // changed
+        ..rotateY(-0.01 * _offset.dx), // changed
       alignment: FractionalOffset.center,
-      child: _defaultApp(context),
+      child: GestureDetector( // new
+        onPanUpdate: (details) => setState(() => _offset += details.delta),
+        onDoubleTap: () => setState(() => _offset = Offset.zero),
+        child: _defaultApp(context),
+      )
     );
   }
 
