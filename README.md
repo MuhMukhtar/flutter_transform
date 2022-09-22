@@ -1,6 +1,10 @@
 # flutter_transform
 
-A new Flutter project.
+![Screenshot 1](img/Screenshot%20(119).png)
+
+![Screenshot 2](img/tugas1.gif)
+
+![Screenshot 3](img/tugas2.gif)
 
 ## Getting Started
 
